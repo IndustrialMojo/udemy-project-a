@@ -1,0 +1,16 @@
+<p>
+  servers works!
+</p>
+
+<server-component></server-component>
+
+<server-component></server-component>
+
+<input type="text" [(ngModel)]="userName" />
+
+<p>
+{{ userName }}
+</p>
+
+
+<input type="button" [disabled]="isUserNameEmpty()" (click)="onButtonClick($event)" value="button" />
