@@ -1,25 +1,44 @@
 
-<p>
-  servers works!
-</p>
+<p>servers works!</p>
 
 <!-- data binding: two way (requires forms module) -->
 
 <input type="text" [(ngModel)]="serverName" />
 
-<!-- data binding: string interpolation -->
-
-<p>
-{{ userName }}
-</p>
-
-<!-- data binding: property/method call -->
-
 <!-- data binding: event -->
 
-<input type="button" [disabled]="isServerNameEmpty()" (click)="onButtonClick($event)" value="Add Server" />
+<div>
+	<input type="button" class="btn-primary"
+		[disabled]="isServerNameEmpty()" 
+		(click)="onButtonClick($event)"
+		value="Add Server" />
+</div>
 
+
+<!-- data binding: string interpolation -->
+
+<!-- directive:  -->
+
+<p *ngIf="serverCreated">Server was created. Server name is {{
+	serverName }}.</p>
 
 <hr />
 
+<!-- data binding: property/method call -->
+
 <server-component *ngFor="let server of servers"></server-component>
+
+<hr />
+
+
+<div>
+	<input type="button" class="btn-primary" 
+		(click)="onShowDetails($event)"
+		value="Show Details" />
+</div>
+
+
+<p *ngIf="showDetails">Lorem ipsum dolor sit amet...</p>
+
+<div [ngStyle]="{ backgroundColor: i >= 4 ? 'blue' : 'yellow' }" *ngFor="let click of clicks; let i = index">{{ click }}</div>
+

@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
 
-    serverName = '';
-    serverCreated = false;
-    servers = ['000', '001', '002'];
+    serverName: string = '';
+    serverCreated: boolean = false;
+    servers: any = ['000', '001', '002'];
+
+
+    showDetails: boolean = false;
+    clicks: any = [];
 
     constructor() { }
 
@@ -22,7 +26,18 @@ export class ServersComponent implements OnInit {
 
     onButtonClick(event: any) {
         this.serverCreated = true;
-        this.serverName = event.target.value;
         this.servers.push(this.serverName);
+        this.serverName = '';
     }
+
+    onShowDetails(event: any) {
+        this.showDetails = !this.showDetails ;
+        this.clicks.push(new Date());
+    }
+
+    getClickCountStyle() {
+        return this.clicks.length >= 5 ? 'blue' : 'yellow';
+    }
+
+
 }
