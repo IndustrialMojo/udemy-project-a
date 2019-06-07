@@ -1,16 +1,25 @@
+
 <p>
   servers works!
 </p>
 
-<server-component></server-component>
+<!-- data binding: two way (requires forms module) -->
 
-<server-component></server-component>
+<input type="text" [(ngModel)]="serverName" />
 
-<input type="text" [(ngModel)]="userName" />
+<!-- data binding: string interpolation -->
 
 <p>
 {{ userName }}
 </p>
 
+<!-- data binding: property/method call -->
 
-<input type="button" [disabled]="isUserNameEmpty()" (click)="onButtonClick($event)" value="button" />
+<!-- data binding: event -->
+
+<input type="button" [disabled]="isServerNameEmpty()" (click)="onButtonClick($event)" value="Add Server" />
+
+
+<hr />
+
+<server-component *ngFor="let server of servers"></server-component>

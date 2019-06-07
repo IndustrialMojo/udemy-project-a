@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'servers-component',
-  templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.css']
+    selector: 'servers-component',
+    templateUrl: './servers.component.html',
+    styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
 
-  userName = ''
-    
-  constructor() { }
+    serverName = '';
+    serverCreated = false;
+    servers = ['000', '001', '002'];
 
-  ngOnInit() {
-  }
+    constructor() { }
 
+    ngOnInit() {
+    }
 
-  isUserNameEmpty() {
-     return this.userName == '';
-  }
+    isServerNameEmpty() {
+        return this.serverName === '';
+    }
 
-  onButtonClick(event: any) {
-      
-      alert('oi');
-      
-      this.userName = '';
-  }
+    onButtonClick(event: any) {
+        this.serverCreated = true;
+        this.serverName = event.target.value;
+        this.servers.push(this.serverName);
+    }
 }
