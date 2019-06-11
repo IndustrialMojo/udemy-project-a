@@ -1,20 +1,10 @@
-<app-header></app-header>
+<app-header (navClicked)="onNavClicked($event)"></app-header>
 
 <div class="container">
-
-
-    <p>
-        Welcome to the AppCompnent.
-    </p>
-
-
     <div class="row">
         <div class="col-md-12">
-
-            <app-shopping-list></app-shopping-list>
-
-            <app-recipe-book></app-recipe-book>
+            <app-recipe-book *ngIf="loadedFeature === 'rb'"></app-recipe-book>
+            <app-shopping-list *ngIf="loadedFeature !== 'rb'"></app-shopping-list>
         </div>
     </div>
-
 </div>
