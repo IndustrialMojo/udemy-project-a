@@ -16,7 +16,6 @@ export class RecipeBookComponent implements OnInit {
     }
 
     onRecipeSelect(selectedRecipe: Recipe) {
-        alert('recipe book : ' + selectedRecipe.name);
         this.selectedRecipe = selectedRecipe;
     }
 }
