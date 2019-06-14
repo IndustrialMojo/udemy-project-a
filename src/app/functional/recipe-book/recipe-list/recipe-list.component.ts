@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { RecipeService } from 'src/app/service/recipe.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: 'app-recipe-list',
@@ -10,10 +11,20 @@ import { RecipeService } from 'src/app/service/recipe.service';
 export class RecipeListComponent implements OnInit {
 
     recipes: Recipe[] = [];
+    selectedId: number;
 
-    constructor(private recipeService: RecipeService) { }
+    constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.recipes = this.recipeService.getRecipes();
+        this.route.params.subscribe(
+            (params: Params) => {
+                this.selectedId = +params['id'];
+            }
+        );
+    }
+
+    onNewRecipeClick() {
+
     }
 }
