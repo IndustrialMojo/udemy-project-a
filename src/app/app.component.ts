@@ -10,8 +10,4 @@ export class AppComponent {
 
     loadedFeature = 'rb';
 
-    onNavClicked(navClicked: string) {
-        this.loadedFeature = navClicked;
-    }
-
 }
