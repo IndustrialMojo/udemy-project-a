@@ -6,6 +6,7 @@ import { ShoppingListComponent } from './functional/shopping-list/shopping-list.
 import { RecipeDetailComponent } from './functional/recipe-book/recipe-detail/recipe-detail.component';
 import { RecipeStartComponent } from './functional/recipe-book/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './functional/recipe-book/recipe-edit/recipe-edit.component';
+import { AuthComponent } from './functional/auth/auth.component';
 import { RecipeResolverService } from './service/recipe-resolver-service';
 
 const appRoutes: Routes = [
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
             { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipeResolverService] },
         ]
     },
-    { path: 'shoppinglist', component: ShoppingListComponent }
+    { path: 'shoppinglist', component: ShoppingListComponent },
+    { path: 'auth', component: AuthComponent }
 ]
 
 //const appRoutes: Routes = [

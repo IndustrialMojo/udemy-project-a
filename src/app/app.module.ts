@@ -20,6 +20,8 @@ import { RecipeService } from './service/recipe.service';
 import { ShoppingListService } from './service/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeEditComponent } from './functional/recipe-book/recipe-edit/recipe-edit.component';
+import { AuthComponent } from './functional/auth/auth.component';
+import { LoadingSpinnerComponent } from './structural/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { RecipeEditComponent } from './functional/recipe-book/recipe-edit/recipe
     ShoppingListComponent,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+	AuthComponent,
+	LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
