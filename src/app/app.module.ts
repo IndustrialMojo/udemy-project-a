@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Route } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './structural/header/header.component';
@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeEditComponent } from './functional/recipe-book/recipe-edit/recipe-edit.component';
 import { AuthComponent } from './functional/auth/auth.component';
 import { LoadingSpinnerComponent } from './structural/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './service/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LoadingSpinnerComponent } from './structural/loading-spinner/loading-sp
   ],
   providers: [
       RecipeService,
-      ShoppingListService
+	  ShoppingListService,
+	  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })
