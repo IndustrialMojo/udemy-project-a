@@ -1,57 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { RecipeBookComponent } from './functional/recipe-book/recipe-book.component';
-import { ShoppingListComponent } from './functional/shopping-list/shopping-list.component';
-import { RecipeDetailComponent } from './functional/recipe-book/recipe-detail/recipe-detail.component';
-import { RecipeStartComponent } from './functional/recipe-book/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './functional/recipe-book/recipe-edit/recipe-edit.component';
-import { AuthComponent } from './functional/auth/auth.component';
-import { RecipeResolverService } from './service/recipe-resolver-service';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: 'recipebook', pathMatch: 'full' },
-    {
-        path: 'recipebook', component: RecipeBookComponent, children: [
-            { path: '', component: RecipeStartComponent },
-            { path: 'new', component: RecipeEditComponent },
-            { path: ':id', component: RecipeDetailComponent, resolve: [RecipeResolverService] },
-            { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipeResolverService] },
-        ]
-    },
-    { path: 'shoppinglist', component: ShoppingListComponent },
-    { path: 'auth', component: AuthComponent }
-]
-
-//const appRoutes: Routes = [
-//  { path: '', component: HomeComponent },
-//  { path: 'users', component: UsersComponent, children: [
-//    { path: ':id/:name', component: UserComponent }
-//  ] },
-//  { path: 'users', component: UsersComponent, children: [
-//    { path: ':id/:name', component: UserComponent }
-//  ] },
-//   {
-//     path: 'servers',
-//     // canActivate: [AuthGuard],
-//     canActivateChild: [AuthGuard],
-//     component: ServersComponent,
-//     children: [
-//     { path: ':id', component: ServerComponent, resolve: {server: ServerResolver} },
-//     { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
-//   ] },
-//   // { path: 'not-found', component: PageNotFoundComponent },
-//   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-//   { path: '**', redirectTo: '/not-found' }
-//];
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
+  {
+    path: 'shopping-list',
+    loadChildren: './shopping-list/shopping-list.module#ShoppingListModule'
+  },
+  {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  }
+];
 
 @NgModule({
-    imports: [
-        // RouterModule.forRoot(appRoutes, {useHash: true})
-        RouterModule.forRoot(appRoutes)
-    ],
-    exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}
